@@ -12,7 +12,9 @@ const WeeklyCalendar = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [currentTime, setCurrentTime] = useState(new Date());
   const [employees, setEmployees] = useState(EMPLOYEES);
-  const [events, setEvents] = useState(INITIAL_EVENTS);
+  const [events, setEvents] = useState(() => 
+    INITIAL_EVENTS.map(ev => ({ ...ev, day: new Date(ev.day) }))
+  );
   const [hoveredEmployeeId, setHoveredEmployeeId] = useState(null);
   const [selectedEmployeeId, setSelectedEmployeeId] = useState(null);
   const fileInputRef = React.useRef(null);
@@ -123,8 +125,8 @@ const WeeklyCalendar = () => {
     employees.forEach(emp => hoursMap[emp.id] = 0);
     
     events.forEach(event => {
-      if (isSameDay(event.day, currentDate) || (event.day >= startDate && event.day <= endDate)) {
-        // Since each event is 1 hour in our mock data
+      const eventDate = new Date(event.day);
+      if (eventDate >= startDate && eventDate <= endDate) {
         if (hoursMap[event.employeeId] !== undefined) {
           hoursMap[event.employeeId] += 1;
         }
@@ -139,6 +141,28 @@ const WeeklyCalendar = () => {
     return events.filter(e => isSameDay(e.day, day) && e.hour === hour);
   };
 
+  const handleAddEmployee = (newEmp) => {
+    const freshEmp = {
+      ...newEmp,
+      id: Date.now(),
+      textColor: newEmp.textColor || 'white'
+    };
+    setEmployees(prev => [...prev, freshEmp]);
+  };
+
+  const handleUpdateEmployee = (updatedEmp) => {
+    setEmployees(prev => prev.map(emp => emp.id === updatedEmp.id ? updatedEmp : emp));
+  };
+
+  const handleDeleteEmployee = (id) => {
+    if (!window.confirm('Are you sure you want to remove this employee? All their scheduled sessions will also be deleted.')) return;
+    
+    setEmployees(prev => prev.filter(emp => emp.id !== id));
+    setEvents(prev => prev.filter(ev => ev.employeeId !== id));
+    if (selectedEmployeeId === id) setSelectedEmployeeId(null);
+    if (hoveredEmployeeId === id) setHoveredEmployeeId(null);
+  };
+
   return (
     <div className="app-layout">
       <EmployeeList 
@@ -148,6 +172,9 @@ const WeeklyCalendar = () => {
         employeeHours={employeeHours}
         selectedEmployeeId={selectedEmployeeId}
         onSelectEmployee={setSelectedEmployeeId}
+        onAddEmployee={handleAddEmployee}
+        onUpdateEmployee={handleUpdateEmployee}
+        onDeleteEmployee={handleDeleteEmployee}
       />
       
       <main className="calendar-container animate-fade-in">

@@ -1,13 +1,54 @@
 import { subDays, addDays } from 'date-fns';
 
 export const EMPLOYEES = [
-    { id: 1, name: 'John Doe', color: '#6366f1', textColor: 'white' }, // Indigo
-    { id: 2, name: 'Jane Smith', color: '#10b981', textColor: 'white' }, // Emerald
-    { id: 3, name: 'Mike Ross', color: '#f59e0b', textColor: 'white' }, // Amber
-    { id: 4, name: 'Sarah Connor', color: '#ef4444', textColor: 'white' }, // Red
-    { id: 5, name: 'David Miller', color: '#8b5cf6', textColor: 'white' }, // Violet
-    { id: 6, name: 'David Johnson', color: '#2961a5', textColor: 'white' },
-    { id: 7, name: 'David Wilson', color: '#ecebde', textColor: 'black' },
+    {
+        "id": 1,
+        "name": "John Doe",
+        "color": "#6366f1",
+        "textColor": "white"
+    },
+    {
+        "id": 2,
+        "name": "Jane Smith",
+        "color": "#10b981",
+        "textColor": "white"
+    },
+    {
+        "id": 3,
+        "name": "Mike Ross",
+        "color": "#f59e0b",
+        "textColor": "white"
+    },
+    {
+        "id": 4,
+        "name": "Sarah Connor",
+        "color": "#ef4444",
+        "textColor": "white"
+    },
+    {
+        "id": 5,
+        "name": "David Miller",
+        "color": "#8b5cf6",
+        "textColor": "white"
+    },
+    {
+        "id": 6,
+        "name": "David Johnson",
+        "color": "#2961a5",
+        "textColor": "white"
+    },
+    {
+        "id": 7,
+        "name": "David Wilson",
+        "color": "#ecebde",
+        "textColor": "black"
+    },
+    {
+        "name": "João",
+        "color": "#aca015",
+        "id": 1770347061725,
+        "textColor": "white"
+    }
 ];
 
 let id = 100;
@@ -682,6 +723,62 @@ export const INITIAL_EVENTS = [
         "employeeId": 2,
         "day": "2026-02-06T03:00:00.000Z",
         "hour": 16,
+        "label": "New Session"
+    },
+    {
+        "id": 1770347069589,
+        "employeeId": 1770347061725,
+        "day": "2026-02-01T03:00:00.000Z",
+        "hour": 23,
+        "label": "New Session"
+    },
+    {
+        "id": 1770347070178,
+        "employeeId": 1770347061725,
+        "day": "2026-02-01T03:00:00.000Z",
+        "hour": 22,
+        "label": "New Session"
+    },
+    {
+        "id": 1770347071223,
+        "employeeId": 1770347061725,
+        "day": "2026-02-01T03:00:00.000Z",
+        "hour": 21,
+        "label": "New Session"
+    },
+    {
+        "id": 1770347071802,
+        "employeeId": 1770347061725,
+        "day": "2026-02-01T03:00:00.000Z",
+        "hour": 20,
+        "label": "New Session"
+    },
+    {
+        "id": 1770347072791,
+        "employeeId": 1770347061725,
+        "day": "2026-02-01T03:00:00.000Z",
+        "hour": 18,
+        "label": "New Session"
+    },
+    {
+        "id": 1770347073581,
+        "employeeId": 1770347061725,
+        "day": "2026-02-01T03:00:00.000Z",
+        "hour": 17,
+        "label": "New Session"
+    },
+    {
+        "id": 1770347074289,
+        "employeeId": 1770347061725,
+        "day": "2026-02-01T03:00:00.000Z",
+        "hour": 16,
+        "label": "New Session"
+    },
+    {
+        "id": 1770347074991,
+        "employeeId": 1770347061725,
+        "day": "2026-02-01T03:00:00.000Z",
+        "hour": 15,
         "label": "New Session"
     }
 ];

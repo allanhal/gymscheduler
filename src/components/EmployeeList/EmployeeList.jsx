@@ -1,10 +1,91 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { UserPlus, Edit2, Trash2, X, Check, Plus } from 'lucide-react';
 import './EmployeeList.css';
 
-const EmployeeList = ({ employees, onHoverEmployee, hoveredEmployeeId, employeeHours, selectedEmployeeId, onSelectEmployee }) => {
+const EmployeeList = ({ 
+  employees, 
+  onHoverEmployee, 
+  hoveredEmployeeId, 
+  employeeHours, 
+  selectedEmployeeId, 
+  onSelectEmployee,
+  onAddEmployee,
+  onUpdateEmployee,
+  onDeleteEmployee
+}) => {
+  const [isFormOpen, setIsFormOpen] = useState(false);
+  const [formMode, setFormMode] = useState('add'); // 'add' or 'edit'
+  const [formData, setFormData] = useState({ name: '', color: '#6366f1', id: null });
+
+  const openAddForm = () => {
+    setFormData({ name: '', color: '#6366f1', id: null });
+    setFormMode('add');
+    setIsFormOpen(true);
+  };
+
+  const openEditForm = (e, employee) => {
+    e.stopPropagation();
+    setFormData({ name: employee.name, color: employee.color, id: employee.id });
+    setFormMode('edit');
+    setIsFormOpen(true);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!formData.name.trim()) return;
+
+    if (formMode === 'add') {
+      onAddEmployee({ name: formData.name, color: formData.color });
+    } else {
+      onUpdateEmployee({ ...formData });
+    }
+    setIsFormOpen(false);
+  };
+
   return (
     <aside className="employee-list-container">
-      <h2 className="employee-list-title">Team ({employees.length})</h2>
+      <div className="employee-list-header">
+        <h2 className="employee-list-title">Team ({employees.length})</h2>
+        <button className="add-employee-btn" onClick={openAddForm} title="Add Team Member">
+          <UserPlus size={18} />
+        </button>
+      </div>
+
+      {isFormOpen && (
+        <form className="employee-form animate-fade-in" onSubmit={handleSubmit}>
+          <div className="form-header">
+            <h3>{formMode === 'add' ? 'New Member' : 'Edit Member'}</h3>
+            <button type="button" onClick={() => setIsFormOpen(false)} className="close-form-btn">
+              <X size={16} />
+            </button>
+          </div>
+          <div className="form-body">
+            <input 
+              autoFocus
+              className="form-input"
+              placeholder="Name"
+              value={formData.name}
+              onChange={e => setFormData(prev => ({ ...prev, name: e.target.value }))}
+            />
+            <div className="color-input-wrapper">
+              <input 
+                type="color"
+                className="color-picker"
+                value={formData.color}
+                onChange={e => setFormData(prev => ({ ...prev, color: e.target.value }))}
+              />
+              <span className="color-label">{formData.color}</span>
+            </div>
+          </div>
+          <div className="form-footer">
+            <button type="submit" className="submit-form-btn">
+              <Check size={16} />
+              {formMode === 'add' ? 'Add' : 'Save'}
+            </button>
+          </div>
+        </form>
+      )}
+
       <div className="employee-items">
         {employees.map((employee) => {
           const isHighlighted = hoveredEmployeeId === employee.id;
@@ -42,8 +123,26 @@ const EmployeeList = ({ employees, onHoverEmployee, hoveredEmployeeId, employeeH
                 }}
               />
               <div className="employee-info">
-                <span className="employee-name" style={{ color: 'inherit' }}>{employee.name}</span>
-                <span className="employee-hours">{hours}h</span>
+                <div className="name-box">
+                  <span className="employee-name" style={{ color: 'inherit' }}>{employee.name}</span>
+                  <span className="employee-hours">{hours}h</span>
+                </div>
+                <div className="employee-actions">
+                  <button 
+                    className="action-icon-btn edit" 
+                    onClick={(e) => openEditForm(e, employee)}
+                    title="Edit"
+                  >
+                    <Edit2 size={14} />
+                  </button>
+                  <button 
+                    className="action-icon-btn delete" 
+                    onClick={(e) => { e.stopPropagation(); onDeleteEmployee(employee.id); }}
+                    title="Delete"
+                  >
+                    <Trash2 size={14} />
+                  </button>
+                </div>
               </div>
             </div>
           );
