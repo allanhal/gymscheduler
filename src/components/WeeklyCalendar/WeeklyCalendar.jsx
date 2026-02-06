@@ -43,6 +43,7 @@ const WeeklyCalendar = () => {
       <EmployeeList 
         employees={EMPLOYEES} 
         onHoverEmployee={setHoveredEmployeeId}
+        hoveredEmployeeId={hoveredEmployeeId}
       />
       
       <main className="calendar-container animate-fade-in">
@@ -91,15 +92,16 @@ const WeeklyCalendar = () => {
               <React.Fragment key={hour}>
                 <div className="time-label">{formatHour(hour)}</div>
                 {weekDays.map((day, dayIndex) => (
-                  <TimeSlot 
-                    key={`${dayIndex}-${hour}`}
-                    day={day}
-                    hour={hour}
-                    currentTime={currentTime}
-                    events={getEventsForSlot(day, hour)}
-                    employees={EMPLOYEES}
-                    hoveredEmployeeId={hoveredEmployeeId}
-                  />
+                    <TimeSlot 
+                      key={`${dayIndex}-${hour}`}
+                      day={day}
+                      hour={hour}
+                      currentTime={currentTime}
+                      events={getEventsForSlot(day, hour)}
+                      employees={EMPLOYEES}
+                      hoveredEmployeeId={hoveredEmployeeId}
+                      onHoverEmployee={setHoveredEmployeeId}
+                    />
                 ))}
               </React.Fragment>
             ))}

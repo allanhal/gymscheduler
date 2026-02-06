@@ -2,7 +2,7 @@ import React from 'react';
 import { isSameDay } from 'date-fns';
 import './TimeSlot.css';
 
-const TimeSlot = ({ day, hour, currentTime, events, employees, hoveredEmployeeId }) => {
+const TimeSlot = ({ day, hour, currentTime, events, employees, hoveredEmployeeId, onHoverEmployee }) => {
   const isToday = isSameDay(day, new Date());
   const isCurrentHour = hour === currentTime.getHours();
 
@@ -30,6 +30,8 @@ const TimeSlot = ({ day, hour, currentTime, events, employees, hoveredEmployeeId
                 key={event.id}
                 className={`event-box ${isEventHighlighted ? 'highlighted' : ''}`}
                 title={`${employee?.name || 'Unknown'}: ${event.label}`}
+                onMouseEnter={() => onHoverEmployee(event.employeeId)}
+                onMouseLeave={() => onHoverEmployee(null)}
                 style={{
                   background: `linear-gradient(135deg, ${color}, ${color}dd)`,
                   boxShadow: `0 4px 12px ${color}33`,
