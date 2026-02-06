@@ -34,6 +34,23 @@ const WeeklyCalendar = () => {
     return format(addHours(startOfDay(new Date()), hour), 'HH:00');
   };
 
+  const calculateEmployeeHours = () => {
+    const hoursMap = {};
+    EMPLOYEES.forEach(emp => hoursMap[emp.id] = 0);
+    
+    events.forEach(event => {
+      if (isSameDay(event.day, currentDate) || (event.day >= startDate && event.day <= endDate)) {
+        // Since each event is 1 hour in our mock data
+        if (hoursMap[event.employeeId] !== undefined) {
+          hoursMap[event.employeeId] += 1;
+        }
+      }
+    });
+    return hoursMap;
+  };
+
+  const employeeHours = calculateEmployeeHours();
+
   const getEventsForSlot = (day, hour) => {
     return events.filter(e => isSameDay(e.day, day) && e.hour === hour);
   };
@@ -44,6 +61,7 @@ const WeeklyCalendar = () => {
         employees={EMPLOYEES} 
         onHoverEmployee={setHoveredEmployeeId}
         hoveredEmployeeId={hoveredEmployeeId}
+        employeeHours={employeeHours}
       />
       
       <main className="calendar-container animate-fade-in">

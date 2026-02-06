@@ -1,7 +1,7 @@
 import React from 'react';
 import './EmployeeList.css';
 
-const EmployeeList = ({ employees, onHoverEmployee, hoveredEmployeeId }) => {
+const EmployeeList = ({ employees, onHoverEmployee, hoveredEmployeeId, employeeHours }) => {
   return (
     <aside className="employee-list-container">
       <h2 className="employee-list-title">Team</h2>
@@ -10,6 +10,7 @@ const EmployeeList = ({ employees, onHoverEmployee, hoveredEmployeeId }) => {
           const isHighlighted = hoveredEmployeeId === employee.id;
           const isDimmed = hoveredEmployeeId && !isHighlighted;
           const color = employee.color;
+          const hours = employeeHours[employee.id] || 0;
 
           return (
             <div
@@ -36,7 +37,10 @@ const EmployeeList = ({ employees, onHoverEmployee, hoveredEmployeeId }) => {
                   boxShadow: isHighlighted ? 'none' : `0 0 8px ${color}`
                 }}
               />
-              <span className="employee-name" style={{ color: 'inherit' }}>{employee.name}</span>
+              <div className="employee-info">
+                <span className="employee-name" style={{ color: 'inherit' }}>{employee.name}</span>
+                <span className="employee-hours">{hours}h</span>
+              </div>
             </div>
           );
         })}
