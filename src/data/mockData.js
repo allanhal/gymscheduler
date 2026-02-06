@@ -12,36 +12,676 @@ export const EMPLOYEES = [
 
 let id = 100;
 export const INITIAL_EVENTS = [
-    { id: id++, employeeId: 2, day: new Date(), hour: 22, label: 'Yoga Session 1' },
-    { id: id++, employeeId: 2, day: new Date(), hour: 23, label: 'Yoga Session 2' },
-    { id: id++, employeeId: 4, day: new Date(), hour: 22, label: 'Yoga Session 3' },
-    { id: id++, employeeId: 3, day: new Date(), hour: 23, label: 'Cardio Blast' },
-    { id: id++, employeeId: 3, day: subDays(new Date(), 1), hour: 23, label: 'Cardio Blast' },
-    { id: id++, employeeId: 3, day: subDays(new Date(), 1), hour: 23, label: 'Cardio Blast' },
-    { id: id++, employeeId: 3, day: subDays(new Date(), 1), hour: 23, label: 'Cardio Blast' },
-    { id: id++, employeeId: 3, day: subDays(new Date(), 1), hour: 23, label: 'Cardio Blast' },
-    { id: id++, employeeId: 5, day: subDays(new Date(), 2), hour: 22, label: 'Cardio Blast' },
-    { id: id++, employeeId: 5, day: subDays(new Date(), 2), hour: 22, label: 'Cardio Blast' },
-    { id: id++, employeeId: 5, day: subDays(new Date(), 2), hour: 22, label: 'Cardio Blast' },
-    { id: id++, employeeId: 3, day: subDays(new Date(), 2), hour: 22, label: 'Cardio Blast' },
-    { id: id++, employeeId: 3, day: subDays(new Date(), 3), hour: 18, label: 'Spinning 1' },
-    { id: id++, employeeId: 7, day: subDays(new Date(), 3), hour: 18, label: 'Spinning 2' },
-    { id: id++, employeeId: 6, day: subDays(new Date(), 3), hour: 18, label: 'Spinning 3' },
-    { id: id++, employeeId: 7, day: subDays(new Date(), 3), hour: 18, label: 'Spinning 4' },
-    { id: id++, employeeId: 6, day: subDays(new Date(), 4), hour: 19, label: 'Walking 1' },
-    { id: id++, employeeId: 6, day: subDays(new Date(), 4), hour: 19, label: 'Walking 2' },
-    { id: id++, employeeId: 7, day: subDays(new Date(), 4), hour: 19, label: 'Walking 3' },
-    { id: id++, employeeId: 6, day: subDays(new Date(), 4), hour: 19, label: 'Walking 4' },
-    { id: id++, employeeId: 7, day: addDays(new Date(), 1), hour: 19, label: 'Weight 1' },
-    { id: id++, employeeId: 3, day: addDays(new Date(), 1), hour: 19, label: 'Weight 2' },
-    { id: id++, employeeId: 3, day: addDays(new Date(), 1), hour: 19, label: 'Weight 3' },
-    { id: id++, employeeId: 3, day: addDays(new Date(), 1), hour: 19, label: 'Weight 4' },
-    { id: id++, employeeId: 3, day: addDays(new Date(), 1), hour: 20, label: 'Weight 5' },
-    { id: id++, employeeId: 3, day: addDays(new Date(), 2), hour: 20, label: 'Running 1' },
-    { id: id++, employeeId: 3, day: addDays(new Date(), 2), hour: 20, label: 'Running 2' },
-    { id: id++, employeeId: 3, day: addDays(new Date(), 2), hour: 20, label: 'Running 3' },
-    { id: id++, employeeId: 3, day: addDays(new Date(), 2), hour: 20, label: 'Running 4' },
-    { id: id++, employeeId: 7, day: addDays(new Date(), 2), hour: 20, label: 'Running 5' },
-    { id: id++, employeeId: 7, day: addDays(new Date(), 2), hour: 20, label: 'Running 5' },
-    { id: id++, employeeId: 7, day: addDays(new Date(), 2), hour: 20, label: 'Running 5' },
+    {
+        "id": 1770346554332,
+        "employeeId": 1,
+        "day": "2026-02-01T03:00:00.000Z",
+        "hour": 5,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346554960,
+        "employeeId": 1,
+        "day": "2026-02-01T03:00:00.000Z",
+        "hour": 6,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346555734,
+        "employeeId": 1,
+        "day": "2026-02-01T03:00:00.000Z",
+        "hour": 7,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346556299,
+        "employeeId": 1,
+        "day": "2026-02-01T03:00:00.000Z",
+        "hour": 8,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346563850,
+        "employeeId": 1,
+        "day": "2026-02-01T03:00:00.000Z",
+        "hour": 10,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346564445,
+        "employeeId": 1,
+        "day": "2026-02-01T03:00:00.000Z",
+        "hour": 11,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346565129,
+        "employeeId": 1,
+        "day": "2026-02-01T03:00:00.000Z",
+        "hour": 12,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346565662,
+        "employeeId": 1,
+        "day": "2026-02-01T03:00:00.000Z",
+        "hour": 13,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346570487,
+        "employeeId": 2,
+        "day": "2026-02-02T03:00:00.000Z",
+        "hour": 8,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346571263,
+        "employeeId": 2,
+        "day": "2026-02-02T03:00:00.000Z",
+        "hour": 9,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346572112,
+        "employeeId": 2,
+        "day": "2026-02-02T03:00:00.000Z",
+        "hour": 10,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346572830,
+        "employeeId": 2,
+        "day": "2026-02-02T03:00:00.000Z",
+        "hour": 11,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346575082,
+        "employeeId": 2,
+        "day": "2026-02-02T03:00:00.000Z",
+        "hour": 13,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346575883,
+        "employeeId": 2,
+        "day": "2026-02-02T03:00:00.000Z",
+        "hour": 14,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346576524,
+        "employeeId": 2,
+        "day": "2026-02-02T03:00:00.000Z",
+        "hour": 15,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346577216,
+        "employeeId": 2,
+        "day": "2026-02-02T03:00:00.000Z",
+        "hour": 16,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346586073,
+        "employeeId": 1,
+        "day": "2026-02-02T03:00:00.000Z",
+        "hour": 5,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346586587,
+        "employeeId": 1,
+        "day": "2026-02-02T03:00:00.000Z",
+        "hour": 6,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346587103,
+        "employeeId": 1,
+        "day": "2026-02-02T03:00:00.000Z",
+        "hour": 7,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346587942,
+        "employeeId": 1,
+        "day": "2026-02-02T03:00:00.000Z",
+        "hour": 8,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346591342,
+        "employeeId": 1,
+        "day": "2026-02-02T03:00:00.000Z",
+        "hour": 10,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346592280,
+        "employeeId": 1,
+        "day": "2026-02-02T03:00:00.000Z",
+        "hour": 11,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346592941,
+        "employeeId": 1,
+        "day": "2026-02-02T03:00:00.000Z",
+        "hour": 12,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346593436,
+        "employeeId": 1,
+        "day": "2026-02-02T03:00:00.000Z",
+        "hour": 13,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346598163,
+        "employeeId": 1,
+        "day": "2026-02-03T03:00:00.000Z",
+        "hour": 5,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346598816,
+        "employeeId": 1,
+        "day": "2026-02-03T03:00:00.000Z",
+        "hour": 6,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346599312,
+        "employeeId": 1,
+        "day": "2026-02-03T03:00:00.000Z",
+        "hour": 7,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346600212,
+        "employeeId": 1,
+        "day": "2026-02-03T03:00:00.000Z",
+        "hour": 8,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346601128,
+        "employeeId": 1,
+        "day": "2026-02-03T03:00:00.000Z",
+        "hour": 10,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346601787,
+        "employeeId": 1,
+        "day": "2026-02-03T03:00:00.000Z",
+        "hour": 11,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346602354,
+        "employeeId": 1,
+        "day": "2026-02-03T03:00:00.000Z",
+        "hour": 12,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346603178,
+        "employeeId": 1,
+        "day": "2026-02-03T03:00:00.000Z",
+        "hour": 13,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346608933,
+        "employeeId": 1,
+        "day": "2026-02-04T03:00:00.000Z",
+        "hour": 5,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346609429,
+        "employeeId": 1,
+        "day": "2026-02-04T03:00:00.000Z",
+        "hour": 6,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346610045,
+        "employeeId": 1,
+        "day": "2026-02-04T03:00:00.000Z",
+        "hour": 7,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346610474,
+        "employeeId": 1,
+        "day": "2026-02-04T03:00:00.000Z",
+        "hour": 8,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346611016,
+        "employeeId": 1,
+        "day": "2026-02-04T03:00:00.000Z",
+        "hour": 10,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346611557,
+        "employeeId": 1,
+        "day": "2026-02-04T03:00:00.000Z",
+        "hour": 11,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346611932,
+        "employeeId": 1,
+        "day": "2026-02-04T03:00:00.000Z",
+        "hour": 12,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346612349,
+        "employeeId": 1,
+        "day": "2026-02-04T03:00:00.000Z",
+        "hour": 13,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346613528,
+        "employeeId": 1,
+        "day": "2026-02-05T03:00:00.000Z",
+        "hour": 5,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346613975,
+        "employeeId": 1,
+        "day": "2026-02-05T03:00:00.000Z",
+        "hour": 6,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346614449,
+        "employeeId": 1,
+        "day": "2026-02-05T03:00:00.000Z",
+        "hour": 7,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346614936,
+        "employeeId": 1,
+        "day": "2026-02-05T03:00:00.000Z",
+        "hour": 8,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346615729,
+        "employeeId": 1,
+        "day": "2026-02-05T03:00:00.000Z",
+        "hour": 10,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346616161,
+        "employeeId": 1,
+        "day": "2026-02-05T03:00:00.000Z",
+        "hour": 11,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346616637,
+        "employeeId": 1,
+        "day": "2026-02-05T03:00:00.000Z",
+        "hour": 12,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346617262,
+        "employeeId": 1,
+        "day": "2026-02-05T03:00:00.000Z",
+        "hour": 13,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346618947,
+        "employeeId": 1,
+        "day": "2026-02-06T03:00:00.000Z",
+        "hour": 5,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346619571,
+        "employeeId": 1,
+        "day": "2026-02-06T03:00:00.000Z",
+        "hour": 6,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346620104,
+        "employeeId": 1,
+        "day": "2026-02-06T03:00:00.000Z",
+        "hour": 7,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346620516,
+        "employeeId": 1,
+        "day": "2026-02-06T03:00:00.000Z",
+        "hour": 8,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346621274,
+        "employeeId": 1,
+        "day": "2026-02-06T03:00:00.000Z",
+        "hour": 10,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346621715,
+        "employeeId": 1,
+        "day": "2026-02-06T03:00:00.000Z",
+        "hour": 11,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346622191,
+        "employeeId": 1,
+        "day": "2026-02-06T03:00:00.000Z",
+        "hour": 12,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346622795,
+        "employeeId": 1,
+        "day": "2026-02-06T03:00:00.000Z",
+        "hour": 13,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346631400,
+        "employeeId": 2,
+        "day": "2026-02-03T03:00:00.000Z",
+        "hour": 8,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346631991,
+        "employeeId": 2,
+        "day": "2026-02-03T03:00:00.000Z",
+        "hour": 9,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346632753,
+        "employeeId": 2,
+        "day": "2026-02-03T03:00:00.000Z",
+        "hour": 10,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346633658,
+        "employeeId": 2,
+        "day": "2026-02-03T03:00:00.000Z",
+        "hour": 11,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346636441,
+        "employeeId": 2,
+        "day": "2026-02-03T03:00:00.000Z",
+        "hour": 13,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346637229,
+        "employeeId": 2,
+        "day": "2026-02-03T03:00:00.000Z",
+        "hour": 14,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346638346,
+        "employeeId": 2,
+        "day": "2026-02-03T03:00:00.000Z",
+        "hour": 15,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346639037,
+        "employeeId": 2,
+        "day": "2026-02-03T03:00:00.000Z",
+        "hour": 16,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346655285,
+        "employeeId": 2,
+        "day": "2026-02-01T03:00:00.000Z",
+        "hour": 8,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346656538,
+        "employeeId": 2,
+        "day": "2026-02-01T03:00:00.000Z",
+        "hour": 9,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346657346,
+        "employeeId": 2,
+        "day": "2026-02-01T03:00:00.000Z",
+        "hour": 10,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346658041,
+        "employeeId": 2,
+        "day": "2026-02-01T03:00:00.000Z",
+        "hour": 11,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346659198,
+        "employeeId": 2,
+        "day": "2026-02-01T03:00:00.000Z",
+        "hour": 13,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346659829,
+        "employeeId": 2,
+        "day": "2026-02-01T03:00:00.000Z",
+        "hour": 14,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346660371,
+        "employeeId": 2,
+        "day": "2026-02-01T03:00:00.000Z",
+        "hour": 15,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346660987,
+        "employeeId": 2,
+        "day": "2026-02-01T03:00:00.000Z",
+        "hour": 16,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346662366,
+        "employeeId": 2,
+        "day": "2026-02-04T03:00:00.000Z",
+        "hour": 8,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346662858,
+        "employeeId": 2,
+        "day": "2026-02-04T03:00:00.000Z",
+        "hour": 9,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346663508,
+        "employeeId": 2,
+        "day": "2026-02-04T03:00:00.000Z",
+        "hour": 10,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346664138,
+        "employeeId": 2,
+        "day": "2026-02-04T03:00:00.000Z",
+        "hour": 11,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346665084,
+        "employeeId": 2,
+        "day": "2026-02-04T03:00:00.000Z",
+        "hour": 13,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346665729,
+        "employeeId": 2,
+        "day": "2026-02-04T03:00:00.000Z",
+        "hour": 14,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346666542,
+        "employeeId": 2,
+        "day": "2026-02-04T03:00:00.000Z",
+        "hour": 15,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346667154,
+        "employeeId": 2,
+        "day": "2026-02-04T03:00:00.000Z",
+        "hour": 16,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346668757,
+        "employeeId": 2,
+        "day": "2026-02-05T03:00:00.000Z",
+        "hour": 8,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346669767,
+        "employeeId": 2,
+        "day": "2026-02-05T03:00:00.000Z",
+        "hour": 9,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346670387,
+        "employeeId": 2,
+        "day": "2026-02-05T03:00:00.000Z",
+        "hour": 10,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346670996,
+        "employeeId": 2,
+        "day": "2026-02-05T03:00:00.000Z",
+        "hour": 11,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346671965,
+        "employeeId": 2,
+        "day": "2026-02-05T03:00:00.000Z",
+        "hour": 13,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346672517,
+        "employeeId": 2,
+        "day": "2026-02-05T03:00:00.000Z",
+        "hour": 14,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346673154,
+        "employeeId": 2,
+        "day": "2026-02-05T03:00:00.000Z",
+        "hour": 15,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346673659,
+        "employeeId": 2,
+        "day": "2026-02-05T03:00:00.000Z",
+        "hour": 16,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346675352,
+        "employeeId": 2,
+        "day": "2026-02-06T03:00:00.000Z",
+        "hour": 8,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346675858,
+        "employeeId": 2,
+        "day": "2026-02-06T03:00:00.000Z",
+        "hour": 9,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346676508,
+        "employeeId": 2,
+        "day": "2026-02-06T03:00:00.000Z",
+        "hour": 10,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346677125,
+        "employeeId": 2,
+        "day": "2026-02-06T03:00:00.000Z",
+        "hour": 11,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346678052,
+        "employeeId": 2,
+        "day": "2026-02-06T03:00:00.000Z",
+        "hour": 13,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346678634,
+        "employeeId": 2,
+        "day": "2026-02-06T03:00:00.000Z",
+        "hour": 14,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346679129,
+        "employeeId": 2,
+        "day": "2026-02-06T03:00:00.000Z",
+        "hour": 15,
+        "label": "New Session"
+    },
+    {
+        "id": 1770346679608,
+        "employeeId": 2,
+        "day": "2026-02-06T03:00:00.000Z",
+        "hour": 16,
+        "label": "New Session"
+    }
 ];

@@ -2,12 +2,16 @@ import React from 'react';
 import { isSameDay } from 'date-fns';
 import './TimeSlot.css';
 
-const TimeSlot = ({ day, hour, currentTime, events, employees, hoveredEmployeeId, onHoverEmployee }) => {
+const TimeSlot = ({ day, hour, currentTime, events, employees, hoveredEmployeeId, onHoverEmployee, onToggleEvent, selectedEmployeeId }) => {
   const isToday = isSameDay(day, new Date());
   const isCurrentHour = hour === currentTime.getHours();
+  const isHighlighted = hoveredEmployeeId && events.some(e => e.employeeId === hoveredEmployeeId);
 
   return (
-    <div className="time-slot">
+    <div 
+      className={`time-slot ${selectedEmployeeId ? 'clickable' : ''}`}
+      onClick={() => onToggleEvent(day, hour)}
+    >
       {isToday && isCurrentHour && (
         <div
           className="current-time-line"
@@ -19,8 +23,14 @@ const TimeSlot = ({ day, hour, currentTime, events, employees, hoveredEmployeeId
 
       {events.length > 0 && (
         <div className="events-container">
-          {events.map(event => {
-            const employee = employees.find(e => e.id === event.employeeId);
+          {events
+            .map(event => ({
+              ...event,
+              employeeName: employees.find(e => e.id === event.employeeId)?.name || ''
+            }))
+            .sort((a, b) => a.employeeName.localeCompare(b.employeeName))
+            .map(event => {
+              const employee = employees.find(e => e.id === event.employeeId);
             const color = employee.color;
             const isEventHighlighted = hoveredEmployeeId === event.employeeId;
             const isDimmed = hoveredEmployeeId && !isEventHighlighted;

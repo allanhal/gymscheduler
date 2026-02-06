@@ -10,6 +10,15 @@
   background: rgba(255, 255, 255, 0.015);
 }
 
+.time-slot.clickable {
+  cursor: copy;
+}
+
+.time-slot.clickable:hover {
+  background: rgba(99, 102, 241, 0.08);
+  box-shadow: inset 0 0 10px rgba(99, 102, 241, 0.05);
+}
+
 .time-slot.highlighted {
   background: rgba(99, 102, 241, 0.05);
   box-shadow: inset 0 0 15px rgba(99, 102, 241, 0.1);
