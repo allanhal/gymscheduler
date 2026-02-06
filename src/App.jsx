@@ -1,4 +1,4 @@
-import WeeklyCalendar from './components/WeeklyCalendar'
+import WeeklyCalendar from './components/WeeklyCalendar/WeeklyCalendar'
 
 function App() {
   return (

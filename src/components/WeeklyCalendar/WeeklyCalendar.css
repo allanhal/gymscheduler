@@ -1,0 +1,197 @@
+.app-layout {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.calendar-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 40px;
+  flex: 1;
+  min-width: 0;
+}
+
+.calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32px;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.icon-box {
+  padding: 12px;
+  background: rgba(99, 102, 241, 0.1);
+  border-radius: 16px;
+  color: var(--color-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.calendar-title {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0;
+  font-family: 'Outfit', sans-serif;
+}
+
+.calendar-subtitle {
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.nav-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  padding: 6px;
+  border-radius: 16px;
+}
+
+.nav-btn {
+  background: transparent;
+  border: none;
+  padding: 8px;
+  border-radius: 10px;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-btn:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+}
+
+.today-btn {
+  padding: 0 16px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+}
+
+.calendar-grid-card {
+  flex: 1;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+}
+
+/* Unified Grid Structure */
+.calendar-unified-grid {
+  display: grid;
+  grid-template-columns: 80px repeat(7, 1fr);
+  flex: 1;
+  overflow: auto;
+  scrollbar-gutter: stable;
+}
+
+/* Sticky Header */
+.sticky-header-cell {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background: var(--color-bg-secondary);
+  border-bottom: 1px solid var(--color-border);
+  backdrop-filter: var(--glass-blur);
+}
+
+.time-header-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-secondary);
+  border-right: 1px solid var(--color-border);
+}
+
+.day-cell {
+  padding: 16px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  border-right: 1px solid var(--color-border);
+}
+
+.day-cell:last-child {
+  border-right: none;
+}
+
+.day-name {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-text-secondary);
+}
+
+.day-number {
+  font-size: 20px;
+  font-weight: 700;
+  font-family: 'Outfit', sans-serif;
+}
+
+.day-cell.active .day-name { color: var(--color-accent); }
+.day-cell.active .day-number { color: white; }
+.day-cell.active { background: rgba(99, 102, 241, 0.03); }
+
+/* Time Column */
+.time-label {
+  height: var(--time-row-height);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  font-variant-numeric: tabular-nums;
+  border-right: 1px solid var(--color-border);
+  position: sticky;
+  left: 0;
+  background: var(--color-bg-secondary);
+  z-index: 20;
+}
+
+/* Custom Day Column container to hold slots */
+.grid-day-column {
+  display: contents; /* Allows children to be part of the parent grid */
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.premium-scroll::-webkit-scrollbar { width: 6px; }
+.premium-scroll::-webkit-scrollbar-track { background: transparent; }
+.premium-scroll::-webkit-scrollbar-thumb {
+  background: var(--glass-border);
+  border-radius: 10px;
+}
