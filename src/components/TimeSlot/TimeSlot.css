@@ -10,6 +10,11 @@
   background: rgba(255, 255, 255, 0.015);
 }
 
+.time-slot.highlighted {
+  background: rgba(99, 102, 241, 0.05);
+  box-shadow: inset 0 0 15px rgba(99, 102, 241, 0.1);
+}
+
 .current-time-line {
   position: absolute;
   left: 0;

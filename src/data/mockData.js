@@ -42,5 +42,8 @@ export const INITIAL_EVENTS = [
     { id: id++, employeeId: 3, day: addDays(new Date(), 2), hour: 20, label: 'Running 2' },
     { id: id++, employeeId: 2, day: addDays(new Date(), 2), hour: 20, label: 'Running 3' },
     { id: id++, employeeId: 3, day: addDays(new Date(), 2), hour: 20, label: 'Running 4' },
+    { id: id++, employeeId: 7, day: addDays(new Date(), 2), hour: 20, label: 'Running 5' },
+    { id: id++, employeeId: 7, day: addDays(new Date(), 2), hour: 20, label: 'Running 5' },
+    { id: id++, employeeId: 7, day: addDays(new Date(), 2), hour: 20, label: 'Running 5' },
 
 ];

@@ -12,6 +12,7 @@ const WeeklyCalendar = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [currentTime, setCurrentTime] = useState(new Date());
   const [events] = useState(INITIAL_EVENTS);
+  const [hoveredEmployeeId, setHoveredEmployeeId] = useState(null);
 
   useEffect(() => {
     const timer = setInterval(() => setCurrentTime(new Date()), 60000);
@@ -39,7 +40,10 @@ const WeeklyCalendar = () => {
 
   return (
     <div className="app-layout">
-      <EmployeeList employees={EMPLOYEES} />
+      <EmployeeList 
+        employees={EMPLOYEES} 
+        onHoverEmployee={setHoveredEmployeeId}
+      />
       
       <main className="calendar-container animate-fade-in">
         <header className="calendar-header">
@@ -94,6 +98,7 @@ const WeeklyCalendar = () => {
                     currentTime={currentTime}
                     events={getEventsForSlot(day, hour)}
                     employees={EMPLOYEES}
+                    hoveredEmployeeId={hoveredEmployeeId}
                   />
                 ))}
               </React.Fragment>
