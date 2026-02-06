@@ -3,6 +3,15 @@
   width: 100vw;
   height: 100vh;
   overflow: hidden;
+  background: var(--color-bg-primary);
+}
+
+@media (max-width: 1024px) {
+  .app-layout {
+    flex-direction: column;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
 }
 
 .calendar-container {
@@ -12,6 +21,21 @@
   padding: 40px;
   flex: 1;
   min-width: 0;
+  position: relative;
+}
+
+@media (max-width: 1024px) {
+  .calendar-container {
+    height: auto;
+    padding: 20px;
+    padding-bottom: 40px;
+  }
+}
+
+@media (max-width: 640px) {
+  .calendar-container {
+    padding: 12px;
+  }
 }
 
 .calendar-header {
@@ -19,6 +43,15 @@
   align-items: center;
   justify-content: space-between;
   margin-bottom: 32px;
+  gap: 16px;
+}
+
+@media (max-width: 1024px) {
+  .calendar-header {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 24px;
+  }
 }
 
 .header-left {
@@ -90,6 +123,18 @@
   border: 1px solid var(--glass-border);
   padding: 6px;
   border-radius: 16px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 640px) {
+  .nav-controls {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .nav-divider {
+    display: none;
+  }
 }
 
 .nav-btn {
@@ -194,6 +239,19 @@
   flex: 1;
   overflow: auto;
   scrollbar-gutter: stable;
+  min-width: 100%;
+}
+
+@media (max-width: 1024px) {
+  .calendar-unified-grid {
+    grid-template-columns: 80px repeat(7, 180px);
+  }
+}
+
+@media (max-width: 640px) {
+  .calendar-unified-grid {
+    grid-template-columns: 60px repeat(7, 140px);
+  }
 }
 
 /* Sticky Header */

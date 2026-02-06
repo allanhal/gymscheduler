@@ -84,3 +84,9 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
+
+@media (max-width: 640px) {
+  .event-label {
+    font-size: 10px;
+  }
+}

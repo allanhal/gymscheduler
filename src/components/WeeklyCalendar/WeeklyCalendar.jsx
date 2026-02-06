@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { format, startOfWeek, addDays, startOfDay, addHours, eachDayOfInterval, endOfWeek, isSameDay } from 'date-fns';
 import { ChevronLeft, ChevronRight, Clock, Calendar as CalendarIcon, Download, Upload } from 'lucide-react';
-import { EMPLOYEES, INITIAL_EVENTS } from '../../data/mockData';
+import appData from '../../data/data.json';
 import EmployeeList from '../EmployeeList/EmployeeList';
 import TimeSlot from '../TimeSlot/TimeSlot';
 import './WeeklyCalendar.css';
@@ -11,14 +11,15 @@ const HOURS = Array.from({ length: 24 }, (_, i) => i);
 const WeeklyCalendar = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [currentTime, setCurrentTime] = useState(new Date());
-  const [employees, setEmployees] = useState(EMPLOYEES);
-  const [events, setEvents] = useState(() => 
-    INITIAL_EVENTS.map(ev => ({ ...ev, day: new Date(ev.day) }))
+  const [employees, setEmployees] = useState(appData.employees);
+  const [events, setEvents] = useState(() =>
+    appData.events.map(ev => ({ ...ev, day: new Date(ev.day) }))
   );
   const [hoveredEmployeeId, setHoveredEmployeeId] = useState(null);
   const [selectedEmployeeId, setSelectedEmployeeId] = useState(null);
+  const [isSidebarRetracted, setIsSidebarRetracted] = useState(false);
   const fileInputRef = React.useRef(null);
-  
+
   // Operating hours state
   const [startHour, setStartHour] = useState(5);
   const [endHour, setEndHour] = useState(23);
@@ -71,7 +72,7 @@ const WeeklyCalendar = () => {
   };
 
   const HOURS = Array.from(
-    { length: Math.max(0, endHour - startHour + 1) }, 
+    { length: Math.max(0, endHour - startHour + 1) },
     (_, i) => i + startHour
   );
 
@@ -79,7 +80,7 @@ const WeeklyCalendar = () => {
     if (!selectedEmployeeId) return;
 
     setEvents(prev => {
-      const existingIndex = prev.findIndex(e => 
+      const existingIndex = prev.findIndex(e =>
         isSameDay(e.day, day) && e.hour === hour && e.employeeId === selectedEmployeeId
       );
 
@@ -123,7 +124,7 @@ const WeeklyCalendar = () => {
   const calculateEmployeeHours = () => {
     const hoursMap = {};
     employees.forEach(emp => hoursMap[emp.id] = 0);
-    
+
     events.forEach(event => {
       const eventDate = new Date(event.day);
       if (eventDate >= startDate && eventDate <= endDate) {
@@ -156,7 +157,7 @@ const WeeklyCalendar = () => {
 
   const handleDeleteEmployee = (id) => {
     if (!window.confirm('Are you sure you want to remove this employee? All their scheduled sessions will also be deleted.')) return;
-    
+
     setEmployees(prev => prev.filter(emp => emp.id !== id));
     setEvents(prev => prev.filter(ev => ev.employeeId !== id));
     if (selectedEmployeeId === id) setSelectedEmployeeId(null);
@@ -165,8 +166,8 @@ const WeeklyCalendar = () => {
 
   return (
     <div className="app-layout">
-      <EmployeeList 
-        employees={employees} 
+      <EmployeeList
+        employees={employees}
         onHoverEmployee={setHoveredEmployeeId}
         hoveredEmployeeId={hoveredEmployeeId}
         employeeHours={employeeHours}
@@ -175,8 +176,10 @@ const WeeklyCalendar = () => {
         onAddEmployee={handleAddEmployee}
         onUpdateEmployee={handleUpdateEmployee}
         onDeleteEmployee={handleDeleteEmployee}
+        isRetracted={isSidebarRetracted}
+        onToggleRetract={() => setIsSidebarRetracted(!isSidebarRetracted)}
       />
-      
+
       <main className="calendar-container animate-fade-in">
         <header className="calendar-header">
           <div className="header-left">
@@ -197,12 +200,12 @@ const WeeklyCalendar = () => {
               <button onClick={() => fileInputRef.current?.click()} className="action-btn" title="Import JSON">
                 <Upload size={18} />
               </button>
-              <input 
-                type="file" 
-                ref={fileInputRef} 
-                onChange={handleImport} 
-                accept=".json" 
-                style={{ display: 'none' }} 
+              <input
+                type="file"
+                ref={fileInputRef}
+                onChange={handleImport}
+                accept=".json"
+                style={{ display: 'none' }}
               />
             </div>
 
@@ -211,22 +214,22 @@ const WeeklyCalendar = () => {
             <div className="range-controls">
               <div className="range-input-group">
                 <Clock size={14} className="input-icon" />
-                <input 
-                  type="number" 
-                  min="0" 
-                  max={endHour - 1} 
-                  value={startHour} 
-                  onChange={(e) => setStartHour(Math.max(0, parseInt(e.target.value) || 0))} 
+                <input
+                  type="number"
+                  min="0"
+                  max={endHour - 1}
+                  value={startHour}
+                  onChange={(e) => setStartHour(Math.max(0, parseInt(e.target.value) || 0))}
                   className="hour-input"
                   title="Start Hour"
                 />
                 <span className="range-sep">to</span>
-                <input 
-                  type="number" 
-                  min={startHour + 1} 
-                  max="23" 
-                  value={endHour} 
-                  onChange={(e) => setEndHour(Math.min(23, parseInt(e.target.value) || 23))} 
+                <input
+                  type="number"
+                  min={startHour + 1}
+                  max="23"
+                  value={endHour}
+                  onChange={(e) => setEndHour(Math.min(23, parseInt(e.target.value) || 23))}
                   className="hour-input"
                   title="End Hour"
                 />
@@ -268,18 +271,18 @@ const WeeklyCalendar = () => {
               <React.Fragment key={hour}>
                 <div className="time-label">{formatHour(hour)}</div>
                 {weekDays.map((day, dayIndex) => (
-                    <TimeSlot 
-                      key={`${dayIndex}-${hour}`}
-                      day={day}
-                      hour={hour}
-                      currentTime={currentTime}
-                      events={getEventsForSlot(day, hour)}
-                      employees={employees}
-                      hoveredEmployeeId={hoveredEmployeeId}
-                      onHoverEmployee={setHoveredEmployeeId}
-                      onToggleEvent={handleToggleEvent}
-                      selectedEmployeeId={selectedEmployeeId}
-                    />
+                  <TimeSlot
+                    key={`${dayIndex}-${hour}`}
+                    day={day}
+                    hour={hour}
+                    currentTime={currentTime}
+                    events={getEventsForSlot(day, hour)}
+                    employees={employees}
+                    hoveredEmployeeId={hoveredEmployeeId}
+                    onHoverEmployee={setHoveredEmployeeId}
+                    onToggleEvent={handleToggleEvent}
+                    selectedEmployeeId={selectedEmployeeId}
+                  />
                 ))}
               </React.Fragment>
             ))}
